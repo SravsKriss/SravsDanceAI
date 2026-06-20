@@ -1,7 +1,8 @@
 import cv2
 import mediapipe as mp
-import mediapipe.python.solutions.pose as mp_pose
-import mediapipe.python.solutions.drawing_utils as mp_drawing
+
+mp_pose = mp.solutions.pose
+mp_drawing = mp.solutions.drawing_utils
 
 import numpy as np
 from typing import List, Tuple, Optional, Dict
