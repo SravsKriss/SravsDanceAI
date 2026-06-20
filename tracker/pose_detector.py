@@ -1,7 +1,16 @@
 import cv2
 import mediapipe as mp
-import mediapipe.python.solutions.pose as mp_pose
-import mediapipe.python.solutions.drawing_utils as mp_drawing
+try:
+    import mediapipe.solutions.pose as mp_pose
+    import mediapipe.solutions.drawing_utils as mp_drawing
+except (ImportError, AttributeError):
+    try:
+        import mediapipe.python.solutions.pose as mp_pose
+        import mediapipe.python.solutions.drawing_utils as mp_drawing
+    except (ImportError, AttributeError):
+        # Fallback for some installs
+        mp_pose = mp.solutions.pose
+        mp_drawing = mp.solutions.drawing_utils
 
 import numpy as np
 from typing import List, Tuple, Optional, Dict
