@@ -1,23 +1,20 @@
 import cv2
 import mediapipe as mp
 
-# Modern way
+# MediaPipe solution selection
 try:
-    import mediapipe.solutions.pose as mp_pose
-    import mediapipe.solutions.drawing_utils as mp_drawing
+    # Try the most common export location
+    from mediapipe.python.solutions import pose as mp_pose
+    from mediapipe.python.solutions import drawing_utils as mp_drawing
 except:
     try:
-        from mediapipe.python.solutions import pose as mp_pose
-        from mediapipe.python.solutions import drawing_utils as mp_drawing
+        # Try the shorthand
+        import mediapipe.solutions.pose as mp_pose
+        import mediapipe.solutions.drawing_utils as mp_drawing
     except:
-        # Final desperate attempt
-        mp_pose = getattr(mp.solutions, "pose", None)
-        mp_drawing = getattr(mp.solutions, "drawing_utils", None)
-        
-        if mp_pose is None:
-            # If all else fails, try to force import it
-            import mediapipe.python.solutions.pose as mp_pose
-            import mediapipe.python.solutions.drawing_utils as mp_drawing
+        # Fallback to the top-level solutions attribute
+        mp_pose = mp.solutions.pose
+        mp_drawing = mp.solutions.drawing_utils
 
 import numpy as np
 from typing import List, Tuple, Optional, Dict
