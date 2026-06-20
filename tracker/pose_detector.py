@@ -3,6 +3,13 @@ import mediapipe as mp
 
 mp_pose = mp.solutions.pose
 mp_drawing = mp.solutions.drawing_utils
+import mediapipe as mp
+
+print("MediaPipe version:", getattr(mp, "__version__", "unknown"))
+print("MediaPipe file:", getattr(mp, "__file__", "unknown"))
+print("Has solutions:", hasattr(mp, "solutions"))
+
+mp_pose = mp.solutions.pose
 
 import numpy as np
 from typing import List, Tuple, Optional, Dict
