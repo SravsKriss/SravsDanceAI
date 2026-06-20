@@ -1,13 +1,7 @@
 import cv2
 import mediapipe as mp
-
-print("MediaPipe version:", getattr(mp, "__version__", "unknown"))
-print("MediaPipe file:", getattr(mp, "__file__", "unknown"))
-print("Has solutions:", hasattr(mp, "solutions"))
-print("DIR:", dir(mp))
-
-# TEMPORARILY STOP HERE
-raise Exception("Debug complete")
+import mediapipe.python.solutions.pose as mp_pose
+import mediapipe.python.solutions.drawing_utils as mp_drawing
 
 import numpy as np
 from typing import List, Tuple, Optional, Dict
